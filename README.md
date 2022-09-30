@@ -38,6 +38,28 @@ Properties for Data Access:
 
 Class Time Definition Design Notes:
 - Public interface: the set of properties and methods programmers should use to interact with objects of the class. 
+- Utility methods are used only inside the class and are not intended to be part of the class's public interface used by client code. 
+- A class's interface is the set of public properties and methods programmers should use to interact with objects of the class. 
+- A class's utility methods are used only inside the class and are not intended to be used by client code. 
+
+Simulating "Private" Attributes: 
+- Class members that may not be accessed outside a class definition are private and visible only within the class that defines them. 
+
+Case Study: Card Shuffling and Dealing Simulation: 
+- A class attribute represents class-wide information. It belongs to the class, not to a specific object of that class. 
+- _format_ is clalled when an object is formatted as a string. 
+- Subplots create a Figure object in which we'll display the images as 52 subplots with 4 rows and 13 columns. 
+
+Inheritance: Base Classes and Subclasses:
+- A base class is a relative term and is vague, whereas subclasses get more specific. 
+- Class hierarchy is also called an inheritance hierarchy. 
+- With single inheritance a class is derived from one base class. 
+- With multiple inheritance a subclass inherits from two or more base classes. 
+- A base-class exists in a hierarchical relationship with its subclasses. 
+- In this section's shape class hierarchy, TwoDimensionalShape is a subclass of Shape and a base class of circle, square, and triangle. 
+
+Building an Inheritance Hierarchy; Introducing Polymorphism: 
+- 
 
 
 
