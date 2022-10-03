@@ -1,0 +1,268 @@
+# coding: utf-8
+from 
+from account import account
+from account import Account
+from decimal import Decimal
+account1 = Account('John Green', Decimal('50.00'))
+account1.name
+account1.deposit(Decimal('25.53'))
+account1.balance
+Account?
+from decimal import Decimal
+class Account
+def deposit(self,amount):
+    if amount < Decimal('0.00'):
+        raise ValueError('amount must be positive.')
+    self.balance += amount
+    
+def withdraw(self,amount):
+    if amount < self.balance:
+        raise ValueError('amount must be <= to balance.')
+    elif amount < Decimal('0.00'):
+        raise ValueError('amount must be positive.')
+    self.balance += amount
+    
+from account import Account
+from decimal import Decimal
+account1 = Account('John Green', Decimal('50.00'))
+account1.withdraw(Decimal('20.0'))
+def withdraw(self,amount):
+    if amount < self.balance:
+        raise ValueError('amount must be <= to balance.')
+    elif amount < Decimal('0.00'):
+        raise ValueError('amount must be positive.')
+    self.balance -= amount
+    
+account1.withdraw(Decimal('20.0'))
+def withdraw(self,amount):
+    if amount > self.balance:
+        raise ValueError('amount must be <= to balance.')
+    elif amount < Decimal('0.00'):
+        raise ValueError('amount must be positive.')
+        
+self.balance -= amount
+def withdraw(self,amount):
+    if amount > self.balance:
+        raise ValueError('amount must be <= to balance.')
+    elif amount < Decimal('0.00'):
+        raise ValueError('amount must be positive.')
+    self.balance -= amount
+    
+account1.withdraw(Decimal('20.0'))
+def _init_(self, name, balance):
+    if balance < Decimal('0.00'):
+        raise ValueError('Initial balance must be >= to 0.00')
+    self.name = name
+    self.balance = balance
+    
+def deposit(self,amount):
+    if amount < Decimal('0.00'):
+        raise ValueError('amount must be positive.')
+    self.balance += amount
+    
+def withdraw(self, amount):
+    if amount > self.balance:
+        raise ValueError('amount must be <= to balance.')
+    elif amount < Decimal('0.00'):
+        raise ValueError('amount must be positive.')
+    self.balance -= amount
+    
+from account import Account
+from decimal import Decimal
+account1 = Account('John Green', Decimal('50.00'))
+account1.withdraw(Decimal('20.0'))
+from account import Account
+from decimal import Decimal
+account1 = Account('John Green', Decimal('50.00'))
+account.balance
+account.balance
+account1.balance
+account1.balance = Decimal('-1000.00')
+account1.balance 
+from timewithproperties import Time
+wake_up = Time(hour = 6, minute = 30)
+wake_up 
+print(wake_up)
+wake_up.hour
+wake_up.set_time(hour=7, minute=45)
+wake_up 
+wake_up.hour = 6
+wake_up 
+wake_up.hour = 100
+from timewithproperties import Time
+t = Time()
+t
+t.time
+t.time = (12, 30, 45)
+t 
+t.time
+from timewithproperties import Time
+wake_up = Time(hour = 7, minute = 45, second = 30)
+wake_up._hour
+wake_up._hour = 100
+wake_up 
+%save
+%save?
+%save -r chapter10exercisespart1
+from private import PrivateClass
+my_object = PrivateClass()
+my_object.public_data
+from deck import DeckOfCards
+deck_of_cards = DeckOfCards()
+print(deck_of_cards)
+deck_of_cards.shuffle()
+print(deck_of_cards)
+deck_of_cards.deal_card()
+card = deck_of_cards.deal_card()
+str(card)
+card.image_name
+from deck import DeckOfCards
+deck_of_cards = DeckOfCards()
+%matplotlib
+from pathlib import Path
+path = Path('.').joinpath('card_images')
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+figure, axes_list = plt.subplots(nrows=4, ncols=13)
+for axes in axes_list.ravel():
+    axes.get_xaxis().set_visible(False)
+    axes.get_yaxis().set_visible(False)
+    image_name = deck_of_cards.deal_card().image_name
+    img = mpimg.imread(str(path.joinpath(image_name).resolve()))
+    axes.imshow(img)
+    
+figure.tight_layout()
+deck_of_cards.shuffle()
+for axes in axes_list.ravel():
+    axes.get_xaxis().set_visible(False)
+    axes.get_yaxis().set_visible(False)
+    image_name = deck_of_cards.deal_card().image_name
+    img = mpimg.imread(str(path.joinpath(image_name).resolve()))
+    axes.imshow(img)
+        
+figure.tight_layout()
+from commissionemployee import CommissionEmployee
+from decimal import Decimal
+c = CommissionEmployee('Sue', 'Jones', '333-33-3333', Decimal('10000.00'), Decimal('0.06'))
+c
+print(f'(c.earnings():,.2f}')
+print(f'{c.earnings():,.2f}')
+from salariedcommissionemployee import SalariedCommissionEmployee
+s = SalariedCommissioinEmployee('Bob', 'Lewis', '444-44-4444', Decimal('5000.00'), Decimal('0.04'), Decimal('300.00'))
+s = SalariedCommissionEmployee('Bob', 'Lewis', '444-44-4444', Decimal('5000.00'), Decimal('0.04'), Decimal('300.00'))
+print(s.first_name, s.last_name, s.ssn, s.gross_sales, s.commission_rate, s.base_salary)
+print(f'{s.earnings():,.2f)
+
+
+exit()
+
+
+
+
+}
+print(f'{s.earnings():,.2f}')
+s.gross_sales = Decimal('10000.00')
+s.commission_rate = Decimal('0.05')
+s.base_salary = Decimal('1000.00')
+print(s)
+print(f'{s.earnings():,.2f}')
+issubclass(SalariedCommissionEmployee, CommissionEmployee)
+isinstance(s, CommissionEmployee)
+isinstance(s, SalariedCommissionEmployee)
+employees = [c, s]
+for employee in employees:
+    print(employee)
+    print(f'{employee.earnings():,.2f}\n')
+    
+class WellPaidDuck:
+    def _repr_(self):
+        return 'Iam a well-paid duck'
+    def earnings(self):
+        return Decimal('1_000_000.00')
+        
+from decimal import Decimal
+from commissionemployee import CommissionEmployee
+from salariedcommissionemployee import SalariedCommissionEmployee
+c = CommissionEmployee('Sue', 'Jones', '333-33-3333', Decimal('10000.00'), Decimal('0.06'))
+s = SalariedCommissionEmployee('Bob', 'Lewis', '444-44-4444', Decimal('5000.00'), Decimal('0.04'), Decimal('300.00'))
+d = WellPaidDuck()
+employees = [c, s, d]
+for employee in employees:
+    print(employee)
+    print(f'{employee.earnings():,.2f}\n')
+    
+from complexnumber import Complex
+x = Complex(real = 2, imaginary = 4)
+x
+y = Complex(real = 5, imaginary = -1)
+y
+x + y
+x
+y
+x += y
+x
+y
+from complexnumber2 import Complex
+x = Complex(real = 2, imaginary = 4)
+y = Complex(real = 5, imaginary = -1)
+x - y
+x -= y
+x
+y
+from collections import namedtuple
+Card = namedtuple('Card', ['face', 'suit'])
+card = Card(face='Ace', suit='Spades')
+card.face
+card.suit
+card
+values = ['Queen', 'Hearts']
+card.Card_make(values)
+card.Card._make(values)
+card = Card._make(value)
+card = Card._make(values)
+card
+card._asdict()
+from collections import namedtuple
+Time = namedtuple('Time', ['hour', 'minute', 'second'])
+t = Time(13, 30, 45)
+print(t.hour, t.minute, t.second)
+t
+from dataclasses import dataclass
+@dataclass
+class Demo:
+    x
+    
+from carddataclass import Card
+c1 = Card(Card.FACES[0], Card.SUITS[3])
+c1
+print(c1)
+c1.face
+c1.suit
+c1.image_name
+c2 = Card(Card.FACES[0], Card.SUITS[3])
+c2
+c3 = Card(Card.FACES[0], Card.SUITS[0])
+c3
+c1 == c2
+c1 == c3
+c1 != c3
+from deck2 import DeckOfCards
+deck_of_cards = DeckOfCards()
+print(deck_of_cards)
+from carddataclass import Card
+c = Card('Ace', 'Spades')
+c
+type(c.face)
+c.face
+c.face = 100
+c
+type(c.face)
+z = 'global z' 
+def print_variables():
+    y = 'local y in print_variables'
+    print(y)
+    print(z)
+    
+print_variables()
+y
+z
