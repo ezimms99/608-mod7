@@ -1,0 +1,249 @@
+In [39]: from sklearn.datasets import load_digits
+
+In [40]: digits = load_digits()
+
+In [41]: print(digits.DESCR)
+.. _digits_dataset:
+
+Optical recognition of handwritten digits dataset
+--------------------------------------------------
+
+**Data Set Characteristics:**
+
+    :Number of Instances: 1797
+    :Number of Attributes: 64
+    :Attribute Information: 8x8 image of integer pixels in the range 0..16.
+    :Missing Attribute Values: None
+    :Creator: E. Alpaydin (alpaydin '@' boun.edu.tr)
+    :Date: July; 1998
+
+This is a copy of the test set of the UCI ML hand-written digits datasets
+https://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits
+
+The data set contains images of hand-written digits: 10 classes where
+each class refers to a digit.
+
+Preprocessing programs made available by NIST were used to extract
+normalized bitmaps of handwritten digits from a preprinted form. From a
+total of 43 people, 30 contributed to the training set and different 13
+to the test set. 32x32 bitmaps are divided into nonoverlapping blocks of
+4x4 and the number of on pixels are counted in each block. This generates
+an input matrix of 8x8 where each element is an integer in the range
+0..16. This reduces dimensionality and gives invariance to small
+distortions.
+
+For info on NIST preprocessing routines, see M. D. Garris, J. L. Blue, G.
+T. Candela, D. L. Dimmick, J. Geist, P. J. Grother, S. A. Janet, and C.
+L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
+1994.
+
+.. topic:: References
+
+  - C. Kaynak (1995) Methods of Combining Multiple Classifiers and Their
+    Applications to Handwritten Digit Recognition, MSc Thesis, Institute of
+    Graduate Studies in Science and Engineering, Bogazici University.
+  - E. Alpaydin, C. Kaynak (1998) Cascading Classifiers, Kybernetika.
+  - Ken Tang and Ponnuthurai N. Suganthan and Xi Yao and A. Kai Qin.
+    Linear dimensionalityreduction using relevance weighted LDA. School of
+    Electrical and Electronic Engineering Nanyang Technological University.
+    2005.
+  - Claudio Gentile. A New Approximate Maximal Margin Classification
+    Algorithm. NIPS. 2000.
+
+
+In [42]: digits.target[::100]
+Out[42]: array([0, 4, 1, 7, 4, 8, 2, 2, 4, 4, 1, 9, 7, 3, 2, 1, 2, 5])
+
+In [43]: digits.data.shape
+Out[43]: (1797, 64)
+
+In [44]: digits.target.shape
+Out[44]: (1797,)
+
+In [45]: digits.images[13]
+Out[45]:
+array([[ 0.,  2.,  9., 15., 14.,  9.,  3.,  0.],
+       [ 0.,  4., 13.,  8.,  9., 16.,  8.,  0.],
+       [ 0.,  0.,  0.,  6., 14., 15.,  3.,  0.],
+       [ 0.,  0.,  0., 11., 14.,  2.,  0.,  0.],
+       [ 0.,  0.,  0.,  2., 15., 11.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  2., 15.,  4.,  0.],
+       [ 0.,  1.,  5.,  6., 13., 16.,  6.,  0.],
+       [ 0.,  2., 12., 12., 13., 11.,  0.,  0.]])
+
+In [46]: digits.data[13]
+Out[46]:
+array([ 0.,  2.,  9., 15., 14.,  9.,  3.,  0.,  0.,  4., 13.,  8.,  9.,
+       16.,  8.,  0.,  0.,  0.,  0.,  6., 14., 15.,  3.,  0.,  0.,  0.,
+        0., 11., 14.,  2.,  0.,  0.,  0.,  0.,  0.,  2., 15., 11.,  0.,
+        0.,  0.,  0.,  0.,  0.,  2., 15.,  4.,  0.,  0.,  1.,  5.,  6.,
+       13., 16.,  6.,  0.,  0.,  2., 12., 12., 13., 11.,  0.,  0.])
+
+In [47]: digits.images[22]
+Out[47]:
+array([[ 0.,  0.,  8., 16.,  5.,  0.,  0.,  0.],
+       [ 0.,  1., 13., 11., 16.,  0.,  0.,  0.],
+       [ 0.,  0., 10.,  0., 13.,  3.,  0.,  0.],
+       [ 0.,  0.,  3.,  1., 16.,  1.,  0.,  0.],
+       [ 0.,  0.,  0.,  9., 12.,  0.,  0.,  0.],
+       [ 0.,  0.,  3., 15.,  5.,  0.,  0.,  0.],
+       [ 0.,  0., 14., 15.,  8.,  8.,  3.,  0.],
+       [ 0.,  0.,  7., 12., 12., 12., 13.,  1.]])
+
+In [48]: digits.target[22]
+Out[48]: 2
+
+In [49]: import matplotlib.pyplot as plt
+
+In [50]: figure, axes_list = plt.subplots(nrows=4, ncols=6, figsize=(6,4))
+
+In [51]: for item in zip(axes.ravel(), digits.images, digits.target):
+    ...:     axes, image, target = item
+    ...:     axes.imshow(image, cmap=plt.cm.gray_r)
+    ...:     axes.set_xticks([])
+    ...:     axes.set_yticks([])
+    ...:     axes.set_title(target)
+    ...: plt.tight_layout()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Input In [51], in <cell line: 1>()
+----> 1 for item in zip(axes.ravel(), digits.images, digits.target):
+      2     axes, image, target = item
+      3     axes.imshow(image, cmap=plt.cm.gray_r)
+
+AttributeError: 'AxesSubplot' object has no attribute 'ravel'
+
+In [52]:
+
+In [52]: from sklearn.model_selection import train_test_split
+
+In [53]: X_train, X_test, y_train, y_test = train_test_split(digits.data, digits.target, random_state = 11)
+
+In [54]: X_train.shape
+Out[54]: (1347, 64)
+
+In [55]: X_test.shape
+Out[55]: (450, 64)
+
+In [56]: knn.fit(X=X_train, y=y_train)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [56], in <cell line: 1>()
+----> 1 knn.fit(X=X_train, y=y_train)
+
+NameError: name 'knn' is not defined
+
+In [57]: predicted = kcc.predict(X=X_test)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [57], in <cell line: 1>()
+----> 1 predicted = kcc.predict(X=X_test)
+
+NameError: name 'kcc' is not defined
+
+In [58]: predicted = knn.predict(X=X_test)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [58], in <cell line: 1>()
+----> 1 predicted = knn.predict(X=X_test)
+
+NameError: name 'knn' is not defined
+
+In [59]: expected = y_test
+
+In [60]: predicted[:20]
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [60], in <cell line: 1>()
+----> 1 predicted[:20]
+
+NameError: name 'predicted' is not defined
+
+In [61]: from sklearn.neighbors import KNeighborsClassifier
+
+In [62]: knn = KNeighborsClassifier()
+
+In [63]: knn.fit(X=X_train, y=y_train)
+Out[63]: KNeighborsClassifier()
+
+In [64]: predicted = knn.predict(X=X_test)
+
+In [65]: predicted[:20]
+Out[65]: array([0, 4, 9, 9, 3, 1, 4, 1, 5, 0, 4, 9, 4, 1, 5, 3, 3, 8, 5, 6])
+
+In [66]: print(f'{knn.score(X_test, y_test):.2f%}')
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Input In [66], in <cell line: 1>()
+----> 1 print(f'{knn.score(X_test, y_test):.2f%}')
+
+ValueError: Invalid format specifier
+
+In [67]: print(f'{knn.score(X_test, y_test):.2%}')
+97.78%
+
+In [68]: from sklearn.metrics import confusion_matrix
+
+In [69]: confusion = confusion_matrix(y_true=expected, y_pred=predicted)
+
+In [70]: confusion
+Out[70]:
+array([[45,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+       [ 0, 45,  0,  0,  0,  0,  0,  0,  0,  0],
+       [ 0,  0, 54,  0,  0,  0,  0,  0,  0,  0],
+       [ 0,  0,  0, 42,  0,  1,  0,  1,  0,  0],
+       [ 0,  0,  0,  0, 49,  0,  0,  1,  0,  0],
+       [ 0,  0,  0,  0,  0, 38,  0,  0,  0,  0],
+       [ 0,  0,  0,  0,  0,  0, 42,  0,  0,  0],
+       [ 0,  0,  0,  0,  0,  0,  0, 45,  0,  0],
+       [ 0,  1,  1,  2,  0,  0,  0,  0, 39,  1],
+       [ 0,  0,  0,  0,  1,  0,  0,  0,  1, 41]], dtype=int64)
+
+In [71]: from sklearn.metrics import classification_report
+
+In [72]: names = [str(digit) for digit in digits.target_names]
+
+In [73]: print(classification_report(expected, predicted, target_names=names))
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        45
+           1       0.98      1.00      0.99        45
+           2       0.98      1.00      0.99        54
+           3       0.95      0.95      0.95        44
+           4       0.98      0.98      0.98        50
+           5       0.97      1.00      0.99        38
+           6       1.00      1.00      1.00        42
+           7       0.96      1.00      0.98        45
+           8       0.97      0.89      0.93        44
+           9       0.98      0.95      0.96        43
+
+    accuracy                           0.98       450
+   macro avg       0.98      0.98      0.98       450
+weighted avg       0.98      0.98      0.98       450
+
+
+In [74]: import pandas as pd
+
+In [75]: confusion_pd.DataFrame(confusion, index=range(10), columns=range(10))
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [75], in <cell line: 1>()
+----> 1 confusion_pd.DataFrame(confusion, index=range(10), columns=range(10))
+
+NameError: name 'confusion_pd' is not defined
+
+In [76]: confusion_df.DataFrame(confusion, index=range(10), columns=range(10))
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Input In [76], in <cell line: 1>()
+----> 1 confusion_df.DataFrame(confusion, index=range(10), columns=range(10))
+
+NameError: name 'confusion_df' is not defined
+
+In [77]: confusion_df = pd.DataFrame(confusion, index=range(10), columns=range(10))
+
+In [78]: import seaborn as sns
+
+In [79]: axes = sns.heatmap(confusion_df, annot=True, cmap='nipy_spectral_r')
+
+In [80]:
